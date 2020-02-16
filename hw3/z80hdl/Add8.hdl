@@ -1,0 +1,16 @@
+// This file is based on
+// the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+
+/**
+ * Adds two 8-bit values.
+ * The most significant carry bit is ignored.
+ */
+
+CHIP Add8 {
+    IN a[8], b[8];
+    OUT out[8];
+
+    PARTS:
+   // Put you code here:
+}

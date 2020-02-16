@@ -1,0 +1,16 @@
+// This file is based on
+// the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+
+/**
+ * 8-bit bitwise Xor:
+ * for i = 0..7 out[i] = (a[i] or b[i])
+ */
+
+CHIP Xor8 {
+    IN a[8], b[8];
+    OUT out[8];
+
+    PARTS:
+    // Put your code here:
+}
