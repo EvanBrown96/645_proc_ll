@@ -1,0 +1,18 @@
+// This file is based on
+// the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+
+/**
+ * Adds or Subtract two 8-bit values.
+ * The most significant carry bit is ignored.
+ * if sub = 0 out = a+b
+ * if sub = 1 out = a-b
+ */
+
+CHIP AddSub8 {
+    IN a[8], b[8], sub;
+    OUT out[8];
+
+    PARTS:
+   // Put you code here:
+}

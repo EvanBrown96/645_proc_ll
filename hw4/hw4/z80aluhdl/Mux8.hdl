@@ -1,0 +1,17 @@
+// This file is based on
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+
+/**
+ * 8-bit multiplexor: 
+ * for i = 0..7 out[i] = a[i] if sel == 0 
+ *                       b[i] if sel == 1
+ */
+
+CHIP Mux8 {
+    IN a[8], b[8], sel;
+    OUT out[8];
+
+    PARTS:
+    // Put your code here:
+}
