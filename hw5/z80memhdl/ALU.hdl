@@ -1,0 +1,39 @@
+// This file is based on
+// the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+
+/**
+ * The ALU (Arithmetic Logic Unit).
+ * Computes one of the following functions:
+ * a+b, a-g, a & b, a | b, a ^ b, a++, a--
+ * according to input bits
+ * c1, c2, c3, c4
+ */
+
+// Implementation: the ALU logic manipulates the a and b inputs
+// and operates on the resulting values, as follows:
+// c1 |  c2 | c3 | c4
+//  X     X    1    1   	 // A XOR B
+//  X     X    1    0   	 // A OR B
+//  X     X    0    1   	 // A AND B
+//  0     0    0    0   	 // A + B
+//  1     0    0    0   	 // A++
+//  0     1    0    0   	 // A - B
+//  1     1    0    0   	 // A--
+
+CHIP ALU {
+    IN
+        a[8], b[8],  // 8-bit inputs
+        c1, c2, c3, c4;
+
+    OUT
+        out[8]; // 16-bit output
+
+    PARTS:
+        Xor8(a=a, b=b, out=xor);
+        Or8(a=a, b=b, out=or);
+        And8(a=a, b=b, out=and);
+        Mux8(a=b, b[0]=true, b[1..7]=false, sel=c1, out=addend);
+        AddSub8(a=a, b=addend, sub=c2, out=addsub);
+        Mux4Way8(a=addsub, b=and, c=or, d=xor, sel[0]=c4, sel[1]=c3, out=out);
+}

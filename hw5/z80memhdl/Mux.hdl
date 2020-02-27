@@ -1,0 +1,20 @@
+// This file is based on
+// the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+
+/**
+ * Multiplexor:
+ * out = a if sel == 0
+ *       b otherwise
+ */
+
+CHIP Mux {
+    IN a, b, sel;
+    OUT out;
+
+    PARTS:
+    Not(in=sel, out=notsel);
+    And(a=a, b=notsel, out=r1);
+    And(a=b, b=sel, out=r2);
+    Or(a=r1, b=r2, out=out);
+}

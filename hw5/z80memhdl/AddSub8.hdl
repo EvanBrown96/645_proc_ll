@@ -1,0 +1,27 @@
+// This file is based on
+// the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+
+/**
+ * Adds or Subtract two 8-bit values.
+ * The most significant carry bit is ignored.
+ * if sub = 0 out = a+b
+ * if sub = 1 out = a-b
+ */
+
+CHIP AddSub8 {
+    IN a[8], b[8], sub;
+    OUT out[8];
+
+    PARTS:
+    Not8(in=b, out=notb);
+    Mux8(a=b, b=notb, sel=sub, out[0]=b0, out[1]=b1, out[2]=b2, out[3]=b3, out[4]=b4, out[5]=b5, out[6]=b6, out[7]=b7);
+    FullAdder(a=a[0], b=b0, c=sub, sum=out[0], carry=w1);
+    FullAdder(a=a[1], b=b1, c=w1, sum=out[1], carry=w2);
+    FullAdder(a=a[2], b=b2, c=w2, sum=out[2], carry=w3);
+    FullAdder(a=a[3], b=b3, c=w3, sum=out[3], carry=w4);
+    FullAdder(a=a[4], b=b4, c=w4, sum=out[4], carry=w5);
+    FullAdder(a=a[5], b=b5, c=w5, sum=out[5], carry=w6);
+    FullAdder(a=a[6], b=b6, c=w6, sum=out[6], carry=w7);
+    FullAdder(a=a[7], b=b7, c=w7, sum=out[7], carry=unused);
+}
