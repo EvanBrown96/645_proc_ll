@@ -13,5 +13,8 @@ CHIP DoubleReg {
     OUT out[8];
 
     PARTS:
-    // Put your code here:
+    DMux(in=load, sel=address, a=load0, b=load1);
+    Byte(in=in, load=load0, out=out0);
+    Byte(in=in, load=load1, out=out1);
+    Mux8(a=out0, b=out1, sel=address, out=out);
 }
